@@ -13,4 +13,8 @@ async function fetchPictures(name, page = 1) {
   }
 }
 
-export default fetchPictures;
+
+const ImagesAPI = {
+  fetchPictures,
+};
+export default ImagesAPI;

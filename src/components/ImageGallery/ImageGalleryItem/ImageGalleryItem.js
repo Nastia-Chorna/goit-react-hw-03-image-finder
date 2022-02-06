@@ -3,23 +3,21 @@ import {
   Item, 
   Image } from "./ImageGalleryItem.styled";
 
-const ImageGalleryItem = ({ pictures, showImage }) => {
-  return pictures.map(({ id, webformatURL, largeImageURL }) => (
-    <Item key={id}>
-    <Image
-     src={webformatURL}
-     alt={`card ${id}`}
-     onClick={showImage}
-    data-url={largeImageURL}
-    />
+  const ImageGalleryItem = ({ webformatURL, tags, largeImageURL, onClick }) => (
+    <Item
+      onClick={() => {
+        onClick(largeImageURL, tags);
+      }}
+    >
+      <Image src={webformatURL} alt={tags} />
     </Item>
-  ));
-};
-
-
-export default ImageGalleryItem;
-
-ImageGalleryItem.propTypes = {
-  pictures: PropTypes.array.isRequired,
-  showImage: PropTypes.func,
-};
+  );
+  export default ImageGalleryItem;
+  
+  ImageGalleryItem.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    webformatURL: PropTypes.string.isRequired,
+    tags: PropTypes.string.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+  };
+  
